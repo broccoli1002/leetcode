@@ -1,0 +1,49 @@
+/*
+func twoSum(nums []int, target int) []int {
+    var d []int
+    for i, v := range nums {
+        for j := i + 1; j < len(nums); j++ {
+            if nums[j] == target - v{
+                return []int{i,j}
+            }
+        }
+	}
+    return d
+}
+*/
+/*
+func twoSum(nums []int, target int) []int {
+    var d []int
+
+    m := make(map[int]int)
+    for i, v := range nums {
+        m[v] = i
+	}
+
+    for i, v := range nums {
+        var complement = target - v;
+        val, ok := m[complement]
+        if ok && val != i{
+            return []int{i, m[complement]}
+        }
+	}
+
+    return d
+}
+*/
+
+func twoSum(nums []int, target int) []int {
+    var d []int
+
+    m := make(map[int]int)
+    for i, v := range nums {
+        var complement = target - v;
+        val, ok := m[complement]
+        if ok {
+            return []int{val, i}
+        }
+        m[v] = i
+	}
+
+    return d
+}
